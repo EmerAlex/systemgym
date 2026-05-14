@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "Lz5mEjU1d/I=",
+  "success": true,
+  "projectFilePath": "C:\\Guidewire\\SystemGym\\SystemGym.Domain\\SystemGym.Domain.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\emerson.quinchia\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}

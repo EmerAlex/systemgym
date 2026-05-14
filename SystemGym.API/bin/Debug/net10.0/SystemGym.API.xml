@@ -1,0 +1,279 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SystemGym.API</name>
+    </assembly>
+    <members>
+        <member name="T:SystemGym.API.Controllers.AuthController">
+            <summary>
+            Controlador para autenticación de usuarios
+            </summary>
+        </member>
+        <member name="M:SystemGym.API.Controllers.AuthController.Register(SystemGym.Application.DTOs.SystemUsers.CreateSystemUserDto,System.Threading.CancellationToken)">
+            <summary>
+            Registrar nuevo usuario del sistema
+            </summary>
+        </member>
+        <member name="M:SystemGym.API.Controllers.AuthController.Login(SystemGym.Application.DTOs.Auth.LoginDto,System.Threading.CancellationToken)">
+            <summary>
+            Login con credenciales
+            </summary>
+        </member>
+        <member name="M:SystemGym.API.Controllers.AuthController.VerifyToken(System.String)">
+            <summary>
+            Verificar token JWT
+            </summary>
+        </member>
+        <member name="M:SystemGym.API.Controllers.AuthController.GetCurrentUser">
+            <summary>
+            Obtener información del usuario autenticado
+            </summary>
+        </member>
+        <member name="M:SystemGym.API.Controllers.AuthController.GetUsers(System.Int32,System.Int32,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Obtener listado de usuarios del sistema
+            </summary>
+        </member>
+        <member name="M:SystemGym.API.Controllers.AuthController.GetUser(System.Guid,System.Threading.CancellationToken)">
+            <summary>
+            Obtener un usuario específico
+            </summary>
+        </member>
+        <member name="M:SystemGym.API.Controllers.AuthController.DeleteUser(System.Guid,System.Threading.CancellationToken)">
+            <summary>
+            Eliminar usuario del sistema
+            </summary>
+        </member>
+        <member name="M:SystemGym.API.Controllers.AuthController.GenerateJwtToken(System.Guid,System.String,System.String)">
+            <summary>
+            Generar JWT Token
+            </summary>
+        </member>
+        <member name="T:SystemGym.API.Controllers.BaseController">
+            <summary>
+            Controlador base para todos los controladores de la API
+            </summary>
+        </member>
+        <member name="M:SystemGym.API.Controllers.BaseController.GetCurrentUserId">
+            <summary>
+            Extrae el UserId del contexto del usuario autenticado
+            </summary>
+        </member>
+        <member name="T:SystemGym.API.Controllers.ClientsController">
+            <summary>
+            Controlador para gestionar clientes
+            </summary>
+        </member>
+        <member name="M:SystemGym.API.Controllers.ClientsController.CreateClient(SystemGym.Application.DTOs.Clients.CreateClientDto,System.Threading.CancellationToken)">
+            <summary>
+            Crear un nuevo cliente
+            </summary>
+        </member>
+        <member name="M:SystemGym.API.Controllers.ClientsController.GetAllClients(System.Int32,System.Int32,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Obtener todos los clientes
+            </summary>
+        </member>
+        <member name="M:SystemGym.API.Controllers.ClientsController.GetClientById(System.Guid,System.Threading.CancellationToken)">
+            <summary>
+            Obtener cliente por ID
+            </summary>
+        </member>
+        <member name="M:SystemGym.API.Controllers.ClientsController.UpdateClient(System.Guid,SystemGym.Application.DTOs.Clients.UpdateClientDto,System.Threading.CancellationToken)">
+            <summary>
+            Actualizar cliente
+            </summary>
+        </member>
+        <member name="T:SystemGym.API.Controllers.DashboardController">
+            <summary>
+            Controlador para endpoints de monitoreo y estadísticas del sistema.
+            </summary>
+        </member>
+        <member name="M:SystemGym.API.Controllers.DashboardController.GetStats(System.Threading.CancellationToken)">
+            <summary>
+            Obtiene estadísticas del sistema: total de clientes, suscripciones,
+            ingresos, planes populares y distribución por período.
+            </summary>
+            <remarks>
+            Retorna métricas del sistema:
+            - Cantidad total de clientes y suscripciones
+            - Suscripciones activas y expiradas
+            - Ingresos totales y promedio por suscripción
+            - Plan más popular
+            - Distribución de suscripciones por tipo de período (Dia/Mes)
+            </remarks>
+            <response code="200">Estadísticas obtenidas correctamente</response>
+            <response code="401">No autenticado</response>
+        </member>
+        <member name="M:SystemGym.API.Controllers.DashboardController.GetMetrics(System.Threading.CancellationToken)">
+            <summary>
+            Obtiene las métricas del dashboard (total clientes, planes, suscripciones, ventas)
+            </summary>
+        </member>
+        <member name="T:SystemGym.API.Controllers.InventoryController">
+            <summary>
+            Controlador para gestionar inventario
+            </summary>
+        </member>
+        <member name="M:SystemGym.API.Controllers.InventoryController.AdjustInventory(SystemGym.Application.DTOs.Inventory.AdjustInventoryDto,System.Threading.CancellationToken)">
+            <summary>
+            Ajustar inventario de un producto
+            </summary>
+        </member>
+        <member name="M:SystemGym.API.Controllers.InventoryController.GetInventoryLogs(System.Int32,System.Int32,System.Nullable{System.Guid},System.Threading.CancellationToken)">
+            <summary>
+            Obtener logs de inventario (solo Admin)
+            </summary>
+        </member>
+        <member name="M:SystemGym.API.Controllers.InventoryController.GetProductInventoryLogs(System.Guid,System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Obtener logs de inventario para un producto (solo Admin)
+            </summary>
+        </member>
+        <member name="T:SystemGym.API.Controllers.PlansController">
+            <summary>
+            Controlador para gestionar planes de suscripción
+            </summary>
+        </member>
+        <member name="M:SystemGym.API.Controllers.PlansController.CreatePlan(SystemGym.Application.DTOs.Plans.CreatePlanDto,System.Threading.CancellationToken)">
+            <summary>
+            Crear nuevo plan
+            </summary>
+        </member>
+        <member name="M:SystemGym.API.Controllers.PlansController.GetPlans(System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Obtener todos los planes
+            </summary>
+        </member>
+        <member name="M:SystemGym.API.Controllers.PlansController.GetPlan(System.Guid,System.Threading.CancellationToken)">
+            <summary>
+            Obtener plan por ID
+            </summary>
+        </member>
+        <member name="M:SystemGym.API.Controllers.PlansController.UpdatePlan(System.Guid,SystemGym.Application.DTOs.Plans.UpdatePlanDto,System.Threading.CancellationToken)">
+            <summary>
+            Actualizar plan (solo Admin)
+            </summary>
+        </member>
+        <member name="M:SystemGym.API.Controllers.PlansController.DeletePlan(System.Guid,System.Threading.CancellationToken)">
+            <summary>
+            Eliminar plan (solo Admin)
+            </summary>
+        </member>
+        <member name="T:SystemGym.API.Controllers.ProductsController">
+            <summary>
+            Controlador para gestionar productos
+            </summary>
+        </member>
+        <member name="M:SystemGym.API.Controllers.ProductsController.CreateProduct(SystemGym.Application.DTOs.Products.CreateProductDto,System.Threading.CancellationToken)">
+            <summary>
+            Crear nuevo producto
+            </summary>
+        </member>
+        <member name="M:SystemGym.API.Controllers.ProductsController.GetProducts(System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Obtener todos los productos
+            </summary>
+        </member>
+        <member name="M:SystemGym.API.Controllers.ProductsController.GetProduct(System.Guid,System.Threading.CancellationToken)">
+            <summary>
+            Obtener producto por ID
+            </summary>
+        </member>
+        <member name="T:SystemGym.API.Controllers.SalesController">
+            <summary>
+            Controlador para gestionar ventas
+            </summary>
+        </member>
+        <member name="M:SystemGym.API.Controllers.SalesController.CreateSale(SystemGym.Application.DTOs.Sales.CreateSaleDto,System.Threading.CancellationToken)">
+            <summary>
+            Crear venta manual
+            </summary>
+        </member>
+        <member name="M:SystemGym.API.Controllers.SalesController.GetSalesHistory(System.Int32,System.Int32,System.Nullable{System.Guid},System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Obtener historial de ventas
+            </summary>
+        </member>
+        <member name="M:SystemGym.API.Controllers.SalesController.GetSale(System.Guid,System.Threading.CancellationToken)">
+            <summary>
+            Obtener venta específica
+            </summary>
+        </member>
+        <member name="M:SystemGym.API.Controllers.SalesController.MarkSaleAsPaid(System.Guid,SystemGym.Application.DTOs.Sales.MarkSaleAsPaidDto,System.Threading.CancellationToken)">
+            <summary>
+            Marcar venta como pagada
+            </summary>
+        </member>
+        <member name="T:SystemGym.API.Controllers.SubscriptionsController">
+            <summary>
+            Controlador para gestionar suscripciones
+            </summary>
+        </member>
+        <member name="M:SystemGym.API.Controllers.SubscriptionsController.CreateSubscription(SystemGym.Application.DTOs.Subscriptions.CreateSubscriptionDto,System.Threading.CancellationToken)">
+            <summary>
+            Crear una nueva suscripción
+            Se genera automáticamente una venta asociada a la suscripción
+            </summary>
+        </member>
+        <member name="M:SystemGym.API.Controllers.SubscriptionsController.GetClientSubscriptions(System.Guid,System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Obtener suscripciones de un cliente
+            </summary>
+        </member>
+        <member name="M:SystemGym.API.Controllers.SubscriptionsController.RenewSubscription(System.Guid,SystemGym.Application.DTOs.Subscriptions.RenewSubscriptionDto,System.Threading.CancellationToken)">
+            <summary>
+            Renovar una suscripción existente.
+            </summary>
+        </member>
+        <member name="M:SystemGym.API.Controllers.SubscriptionsController.CancelSubscription(System.Guid,System.Threading.CancellationToken)">
+            <summary>
+            Cancelar una suscripción existente.
+            </summary>
+        </member>
+        <member name="M:SystemGym.API.Controllers.SubscriptionsController.GetSubscriptions(System.Int32,System.Int32,System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Obtener todas las suscripciones (ambos roles).
+            Permite buscar por número de documento o por nombre/apellido del cliente.
+            </summary>
+        </member>
+        <member name="M:SystemGym.API.Controllers.SubscriptionsController.RegisterIngreso(System.Guid,System.Threading.CancellationToken)">
+            <summary>
+            Registrar un ingreso en una suscripción.
+            Solo 1 ingreso por día; descuenta de CantidadIngresos.
+            </summary>
+        </member>
+        <member name="M:SystemGym.API.Controllers.SubscriptionsController.ExportClientSubscriptionsCsv(System.Guid,System.Threading.CancellationToken)">
+            <summary>
+            Exportar suscripciones de un cliente específico como archivo CSV.
+            </summary>
+        </member>
+        <member name="M:SystemGym.API.Controllers.SubscriptionsController.ExportSubscriptionsCsv(System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Exportar resultados de búsqueda de suscripciones como archivo CSV.
+            Acepta los mismos parámetros de búsqueda que GET /subscriptions.
+            </summary>
+        </member>
+        <member name="T:SystemGym.API.Middleware.GlobalExceptionHandlerMiddleware">
+            <summary>
+            Middleware centralizado para manejo de excepciones.
+            Reemplaza los 15+ bloques try-catch duplicados en los controllers.
+            </summary>
+        </member>
+        <member name="T:SystemGym.API.Middleware.GlobalExceptionHandlerMiddlewareExtensions">
+            <summary>
+            Extensión para registrar el middleware en el pipeline
+            </summary>
+        </member>
+        <member name="T:SystemGym.API.Services.PasswordHasher">
+            <summary>
+            Implementación de hash de contraseñas con Argon2.
+            </summary>
+        </member>
+        <member name="T:Program">
+            <summary>
+            Auto-generated public partial Program class for top-level statement apps.
+            </summary>
+        </member>
+    </members>
+</doc>

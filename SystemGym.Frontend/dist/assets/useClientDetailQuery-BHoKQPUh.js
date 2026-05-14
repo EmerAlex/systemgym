@@ -1,0 +1,1 @@
+import{u as r}from"./useQuery-C-RDIDZY.js";import{q as u}from"./query-keys-Pru1HczA.js";import{a as t}from"./clients-api-DJtNBuN5.js";function a(e){return r({queryKey:[...u.clients,e],queryFn:()=>t(e),enabled:!!e})}export{a as u};

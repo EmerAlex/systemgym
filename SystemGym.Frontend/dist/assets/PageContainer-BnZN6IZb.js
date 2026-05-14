@@ -1,0 +1,1 @@
+import{j as r,B as n,T as s}from"./index-DnqB410O.js";function a({title:o,description:t,children:e}){return r.jsxs(n,{sx:{p:{xs:2,md:4}},children:[r.jsx(s,{variant:"h3",gutterBottom:!0,children:o}),t?r.jsx(s,{color:"text.secondary",sx:{mb:3},children:t}):null,e]})}export{a as P};

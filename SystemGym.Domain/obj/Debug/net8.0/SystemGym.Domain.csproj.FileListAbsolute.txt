@@ -1,0 +1,13 @@
+C:\Guidewire\SystemGym\SystemGym.Domain\obj\Debug\net8.0\SystemGym.Domain.csproj.AssemblyReference.cache
+C:\Guidewire\SystemGym\SystemGym.Domain\obj\Debug\net8.0\SystemGym.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Guidewire\SystemGym\SystemGym.Domain\obj\Debug\net8.0\SystemGym.Domain.AssemblyInfoInputs.cache
+C:\Guidewire\SystemGym\SystemGym.Domain\obj\Debug\net8.0\SystemGym.Domain.AssemblyInfo.cs
+C:\Guidewire\SystemGym\SystemGym.Domain\obj\Debug\net8.0\SystemGym.Domain.csproj.CoreCompileInputs.cache
+C:\Guidewire\SystemGym\SystemGym.Domain\obj\Debug\net8.0\SystemGym.Domain.sourcelink.json
+C:\Guidewire\SystemGym\SystemGym.Domain\bin\Debug\net8.0\SystemGym.Domain.deps.json
+C:\Guidewire\SystemGym\SystemGym.Domain\bin\Debug\net8.0\SystemGym.Domain.dll
+C:\Guidewire\SystemGym\SystemGym.Domain\bin\Debug\net8.0\SystemGym.Domain.pdb
+C:\Guidewire\SystemGym\SystemGym.Domain\obj\Debug\net8.0\SystemGym.Domain.dll
+C:\Guidewire\SystemGym\SystemGym.Domain\obj\Debug\net8.0\refint\SystemGym.Domain.dll
+C:\Guidewire\SystemGym\SystemGym.Domain\obj\Debug\net8.0\SystemGym.Domain.pdb
+C:\Guidewire\SystemGym\SystemGym.Domain\obj\Debug\net8.0\ref\SystemGym.Domain.dll

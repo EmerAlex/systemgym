@@ -1,0 +1,12 @@
+global using System;
+global using System.Collections.Generic;
+global using System.Linq;
+global using System.Threading.Tasks;
+global using System.Threading;
+global using FluentValidation;
+global using MediatR;
+global using AutoMapper;
+global using Microsoft.Extensions.Logging;
+global using SystemGym.Domain.Entities;
+global using SystemGym.Domain.ValueObjects;
+global using SystemGym.Domain.Abstractions;

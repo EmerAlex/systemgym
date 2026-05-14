@@ -1,0 +1,1 @@
+const o={dashboard:["dashboard"],clients:["clients"],plans:["plans"],subscriptions:s=>["subscriptions",s],allSubscriptions:(s,n,i)=>["subscriptions","all",s,n,i],sales:["sales"],inventoryLogs:["inventory-logs"]};export{o as q};

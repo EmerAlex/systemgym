@@ -1,0 +1,1 @@
+import{u as e}from"./useQuery-C-RDIDZY.js";import{q as r}from"./query-keys-Pru1HczA.js";import{g as s}from"./plans-api-CYbwTM0-.js";function t(){return e({queryKey:r.plans,queryFn:()=>s(),staleTime:300*1e3})}export{t as u};

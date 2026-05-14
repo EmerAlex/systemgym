@@ -1,0 +1,1 @@
+import{j as r,B as i,A as s,x as o}from"./index-DnqB410O.js";function a({message:e,onRetry:t}){return r.jsx(i,{sx:{p:4},children:r.jsx(s,{severity:"error",action:t?r.jsx(o,{color:"inherit",size:"small",onClick:t,children:"Reintentar"}):void 0,children:e})})}export{a as E};
