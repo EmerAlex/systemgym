@@ -1,0 +1,132 @@
+version: '3.8'
+
+# =============================================================
+# SystemGym - Despliegue completo con Docker Compose
+#
+# REQUISITOS: Solo tener Docker Desktop instalado en Windows
+#
+# INSTRUCCIONES:
+#   1. Copiar carpeta SystemGym al computador destino
+#   2. Abrir terminal en la carpeta SystemGym
+#   3. Ejecutar: docker compose up -d --build
+#   4. Esperar 5-10 minutos (primera vez descarga imágenes)
+#   5. Abrir navegador en http://localhost:3000
+#
+# DETENER:
+#   docker compose down
+#
+# DETENER Y BORRAR DATOS:
+#   docker compose down --volumes
+# =============================================================
+
+services:
+
+  # -----------------------------------------------------------
+  # BASE DE DATOS PostgreSQL 15
+  # -----------------------------------------------------------
+  postgres:
+    image: postgres:15-alpine
+    container_name: systemgym-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: systemgym_user
+      POSTGRES_PASSWORD: password123
+      POSTGRES_DB: systemgym_db
+      PGDATA: /var/lib/postgresql/data/pgdata
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - systemgym-net
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U systemgym_user -d systemgym_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+
+  # -----------------------------------------------------------
+  # BACKEND: .NET 10 API
+  # Compila el código fuente automáticamente
+  # Aplica migraciones de BD en el arranque
+  # -----------------------------------------------------------
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: systemgym-backend
+    restart: unless-stopped
+    environment:
+      # Conexión a PostgreSQL (usa nombre del servicio, no localhost)
+      ConnectionStrings__DefaultConnection: "Host=postgres;Port=5432;Database=systemgym_db;Username=systemgym_user;Password=password123"
+
+      # JWT (cambiar el Secret en producción)
+      JwtSettings__Secret: "your-secret-key-that-is-minimum-32-characters-long-for-hs256!"
+      JwtSettings__ExpirationMinutes: "60"
+      JwtSettings__RefreshTokenExpirationDays: "7"
+
+      # ASP.NET
+      ASPNETCORE_ENVIRONMENT: "Production"
+      ASPNETCORE_URLS: "http://+:5000"
+
+      # Logging
+      Logging__LogLevel__Default: "Information"
+      Logging__LogLevel__Microsoft: "Warning"
+    ports:
+      - "5000:5000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - systemgym-net
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+
+  # -----------------------------------------------------------
+  # FRONTEND: React + Vite → Nginx
+  # Compila el código fuente automáticamente
+  # Sirve la SPA en puerto 3000
+  # El navegador llama al backend en localhost:5000
+  # -----------------------------------------------------------
+  frontend:
+    build:
+      context: ./SystemGym.Frontend
+      dockerfile: ../Dockerfile.frontend
+      args:
+        # URL que el NAVEGADOR usará para llamar al backend
+        # Desde el navegador del usuario, el backend es localhost:5000
+        VITE_API_BASE_URL: "http://localhost:5000/api/v1"
+    container_name: systemgym-frontend
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    depends_on:
+      backend:
+        condition: service_healthy
+    networks:
+      - systemgym-net
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:3000"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+
+# -----------------------------------------------------------
+# VOLÚMENES persistentes (los datos de BD sobreviven reinicios)
+# -----------------------------------------------------------
+volumes:
+  postgres-data:
+    driver: local
+
+# -----------------------------------------------------------
+# RED interna para comunicación entre contenedores
+# -----------------------------------------------------------
+networks:
+  systemgym-net:
+    driver: bridge

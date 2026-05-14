@@ -1,0 +1,60 @@
+# ============================================================
+# .dockerignore — Excluir archivos innecesarios del contexto
+# Esto acelera el build y reduce el tamaño de la imagen
+# ============================================================
+
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Visual Studio
+.vs
+*.user
+*.suo
+
+# Binarios y objetos compilados
+**/bin/
+**/obj/
+
+# Node modules (el Dockerfile los instala dentro del contenedor)
+**/node_modules/
+
+# Builds del frontend (se generan dentro del contenedor)
+**/dist/
+
+# Logs
+**/logs/
+**/*.log
+
+# Variables de entorno locales (se usan las de docker-compose)
+**/.env.local
+**/.env.development.local
+**/.env.production.local
+
+# Archivos de pruebas
+SystemGym.Tests/
+
+# Archivos de documentación (no necesarios en la imagen)
+*.md
+DEPLOYMENT_CHECKLIST.md
+GUIA_*.md
+AUDITORIA_*.md
+RESUMEN_*.md
+VERIFICACION_*.md
+
+# Archivos de configuración del IDE
+.editorconfig
+*.code-workspace
+
+# Cobertura de código
+**/coverage/
+**/TestResults/
+
+# Caché de paquetes
+**/.nuget/
+**/packages/
+
+# Temporales
+**/*.tmp
+**/*.temp

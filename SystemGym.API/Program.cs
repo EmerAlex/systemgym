@@ -189,12 +189,14 @@ app.UseSerilogRequestLogging();
 
 app.UseGlobalExceptionHandler();
 
-app.UseHttpsRedirection();
-
 app.UseCors("AllowFrontend");
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+// Health check endpoint (usado por Docker health checks)
+app.MapGet("/health", () => Results.Ok(new { status = "healthy", timestamp = DateTime.UtcNow }))
+   .AllowAnonymous();
 
 app.MapControllers();
 
