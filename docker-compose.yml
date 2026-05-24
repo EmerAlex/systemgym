@@ -95,8 +95,8 @@ services:
   # -----------------------------------------------------------
   frontend:
     build:
-      context: ./SystemGym.Frontend
-      dockerfile: ../Dockerfile.frontend
+      context: .
+      dockerfile: Dockerfile.frontend
       args:
         # URL que el NAVEGADOR usará para llamar al backend
         # Desde el navegador del usuario, el backend es localhost:5000

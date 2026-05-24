@@ -5,13 +5,13 @@ FROM node:18-alpine AS frontend-build
 WORKDIR /app
 
 # Copiar package.json primero para aprovechar cache
-COPY package.json package-lock.json ./
+COPY SystemGym.Frontend/package.json SystemGym.Frontend/package-lock.json ./
 
 # Instalar dependencias exactas del lock file
 RUN npm ci
 
 # Copiar código fuente
-COPY . .
+COPY SystemGym.Frontend/ .
 
 # VITE_API_BASE_URL se pasa en build time desde docker-compose
 # El navegador llama a localhost:5000 (puerto mapeado del backend)
