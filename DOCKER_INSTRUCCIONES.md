@@ -23,12 +23,24 @@ Copiar la carpeta completa `SystemGym` al computador destino.
 cd C:\ruta\SystemGym
 ```
 
+### 2.1 Verificar Docker
+```powershell
+docker --version
+docker compose version
+```
+Si `docker` no se reconoce, Docker Desktop no está instalado, no está abierto, o la terminal se abrió antes de instalarlo. Cierra y abre la terminal nuevamente.
+
 ### 3. Iniciar todo
 ```powershell
 docker compose up -d --build
 ```
 > Primera vez: ~10 minutos (descarga imágenes + compila código)
 > Siguientes veces: ~2 minutos
+
+Si tu instalación usa el binario antiguo de Compose, ejecuta:
+```powershell
+docker-compose up -d --build
+```
 
 ### 4. Verificar que todo está corriendo
 ```powershell
@@ -131,7 +143,25 @@ docker compose up -d --build
 ```
 
 ### Docker no reconoce el comando
-Verificar que Docker Desktop esté abierto (ícono en la barra de tareas).
+Verificar que Docker Desktop esté instalado y abierto (ícono en la barra de tareas).
+
+Si `docker compose up -d --build` muestra un error como `unknown short flag: 'd' in -d`:
+```powershell
+docker --version
+docker compose version
+docker-compose --version
+```
+Usa una de estas opciones según el resultado:
+
+```powershell
+# Docker Compose v2
+docker compose up -d --build
+
+# Docker Compose v1
+docker-compose up -d --build
+```
+
+Si ninguno de los dos comandos existe, instala Docker Desktop y vuelve a abrir la terminal.
 
 ---
 

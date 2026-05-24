@@ -131,7 +131,6 @@ C:\Guidewire\SystemGym\SystemGym.API\obj\Debug\net10.0\refint\SystemGym.API.dll
 C:\Guidewire\SystemGym\SystemGym.API\obj\Debug\net10.0\SystemGym.API.xml
 C:\Guidewire\SystemGym\SystemGym.API\obj\Debug\net10.0\SystemGym.API.pdb
 C:\Guidewire\SystemGym\SystemGym.API\bin\Debug\net10.0\appsettings.json
-C:\Guidewire\SystemGym\SystemGym.API\bin\Debug\net10.0\appsettings.Production.json
 C:\Guidewire\SystemGym\SystemGym.API\bin\Debug\net10.0\SystemGym.API.staticwebassets.endpoints.json
 C:\Guidewire\SystemGym\SystemGym.API\bin\Debug\net10.0\SystemGym.API.deps.json
 C:\Guidewire\SystemGym\SystemGym.API\bin\Debug\net10.0\SystemGym.API.runtimeconfig.json
